@@ -269,7 +269,8 @@
 						<v-icon icon="mdi:mdi-github"></v-icon>
 					</template>
 
-					GitHub Pages Action - Used to build and publish the documentation site to GitHub Pages
+					GitHub Pages Action - Used to build and publish the documentation site to GitHub Pages. Make sure to update
+					email and user name in `.github/workflows/main.yml`
 				</v-list-item>
 
 				<v-list-item
