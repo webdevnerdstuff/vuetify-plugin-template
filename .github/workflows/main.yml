@@ -30,8 +30,8 @@ jobs:
 
     - name: Build
       run: |
-        git config --global user.email "__EMAIL__"
-        git config --global user.name "__USERNAME__"
+        git config --global user.email "webdevnerdstuff@gmail.com"
+        git config --global user.name "webdevnerdstuff"
         mkdir docs
         npm install --g gh-pages
         npm i
