@@ -19,12 +19,12 @@
 
 ## Description
 
-Vuetify Plugin Template is a template to help you get starting building your own plugin/component for Vuetify.
+Vuetify Plugin Template is a template to help you get starting building your own plugin/component for Vuetify (v3).
 
 
 ## Development Playground
 
-The `vuetify-plugin-template` is still in beta. If you would like to test the component library out, you can clone the repo and run the following commands:
+If you would like to test the component out, you can clone the repo and run the following commands:
 
 `pnpm i && pnpm play`  
   
@@ -51,7 +51,6 @@ npm i vuetify-plugin-template
  
 [Vuetify v3](https://vuetifyjs.com/)  
 [Vue 3](https://vuejs.org/)  
-[VueUse](https://vueuse.org/)
 
 
 ## Change Log
