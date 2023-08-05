@@ -1,6 +1,6 @@
-<!-- <p align="center">
+<p align="center">
   <img alt="Vuetify Logo" width="100" src="https://raw.githubusercontent.com/webdevnerdstuff/vuetify-plugin-template/main/src/assets/vuetify-logo.svg">
-</p> -->
+</p>
 
 <p>
   <h1 align="center">Vuetify Plugin Template</h1>
@@ -21,6 +21,9 @@
 
 Vuetify Plugin Template is a template to help you get starting building your own plugin/component for Vuetify (v3).
 
+## Features
+
+See [Documentation & Demo](https://webdevnerdstuff.github.io/vuetify-plugin-template/#features) page for a list of features.
 
 ## Development Playground
 
