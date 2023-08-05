@@ -22,30 +22,9 @@
 Vuetify Plugin Template is a template to help you get starting building your own plugin/component for Vuetify (v3).
 
 ## Features
-
+ 
 See [Documentation & Demo](https://webdevnerdstuff.github.io/vuetify-plugin-template/#features) page for a list of features.
 
-## Development Playground
-
-If you would like to test the component out, you can clone the repo and run the following commands:
-
-`pnpm i && pnpm play`  
-  
-This will open up a Playground page that loads the file `./src/playground/PlaygroundPage.vue`. You can edit this file to test out the component.
-
-
-## Installation
- 
-Using [pnpm](https://pnpm.io/):
-```
-pnpm add vuetify-plugin-template
-```
-
-Using npm:
-```
-npm i vuetify-plugin-template
-```
- 
 ## Documentation
  
 [Documentation & Demo](https://webdevnerdstuff.github.io/vuetify-plugin-template/) 

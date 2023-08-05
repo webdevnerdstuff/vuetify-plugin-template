@@ -27,8 +27,11 @@
 			class="font-italic text-disabled text-caption"
 			cols="12"
 		>
-			Site built using the vuetify-plugin-template by <a
-				:href="links.github"
+			Site built using the <a
+				href="https://github.com/webdevnerdstuff/vuetify-plugin-template"
+				target="_blank"
+			>vuetify-plugin-template</a> by <a
+				href="https://github.com/webdevnerdstuff/"
 				target="_blank"
 			>WebDevNerdStuff</a>
 		</v-col>
@@ -40,5 +43,4 @@ import { inject } from 'vue';
 
 
 const classes = inject('classes');
-const links = inject('links');
 </script>
