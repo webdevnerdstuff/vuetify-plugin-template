@@ -89,7 +89,7 @@
 					<template #prepend>
 						<v-img
 							class="me-8"
-							src="https://www.google.com/s2/favicons?sz=64&domain=stylelint.io"
+							src="https://www.google.com/s2/favicons?domain=https://stylelint.io/&sz=64"
 							width="24"
 						></v-img>
 					</template>
