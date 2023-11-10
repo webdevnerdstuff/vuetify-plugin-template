@@ -285,15 +285,6 @@
 				</v-list-item>
 			</v-list>
 		</v-col>
-
-		<v-col cols="12">
-			<v-alert icon="$warning">
-				Please note that this component is using the experimental vue feature <a
-					href="defineModel"
-					target="_blank"
-				>defineModel</a>. You do not need to use this if you choose not to.
-			</v-alert>
-		</v-col>
 	</v-row>
 </template>
 

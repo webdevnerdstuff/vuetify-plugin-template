@@ -21,16 +21,18 @@ import componentEmits from './utils/emits';
 
 
 
-const modelValue = defineModel<string>();
-
 const attrs = useAttrs();
 const slots = useSlots();
 const emit = defineEmits([...componentEmits]);
 
-const theme = useTheme();
 
+// -------------------------------------------------- Props //
 const props = withDefaults(defineProps<Props>(), { ...AllProps });
 const settings = reactive({ ...attrs, ...props });
+
+
+// -------------------------------------------------- Data #
+const modelValue = ref(attrs.modelValue);
 
 console.log({
 	emit,
@@ -38,9 +40,7 @@ console.log({
 	props,
 	settings,
 	slots,
-	theme,
 });
-
 
 // ------------------------------------------------ Class & Styles //
 const containerClasses = computed(() => useContainerClasses({
