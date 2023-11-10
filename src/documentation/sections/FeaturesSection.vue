@@ -203,7 +203,7 @@
 				</v-list-item>
 
 				<v-list-item
-					href="https://webdevnerdstuff.github.io/vue3-code-block/"
+					href="https://webdevnerdstuff.github.io/vue-code-block/"
 					target="_blank"
 				>
 					<template #prepend>

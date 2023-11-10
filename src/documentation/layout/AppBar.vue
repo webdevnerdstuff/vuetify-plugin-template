@@ -18,7 +18,7 @@
 			v-else
 			class="nav-drawer-btn me-2 ms-3"
 			:height="iconSize.height"
-			:href="`/${store.storageName}/`"
+			:href="`/${store.packageName}/`"
 			:width="iconSize.width"
 		>
 			<v-icon icon="mdi:mdi-home"></v-icon>
@@ -36,7 +36,7 @@
 			multiple
 			placeholder="Vuetify Links"
 			prepend-inner-icon="$vuetify"
-			style="height: inherit; max-width: 300px; width: 300px;"
+			style="max-width: 300px; width: 300px;"
 			title="name"
 			variant="underlined"
 		>
@@ -44,10 +44,10 @@
 				<v-list-item
 					:key="item.key"
 					density="compact"
-					:href="item.link"
-					:prepend-icon="item.icon ? item.icon : '$vuetify'"
+					:href="item.raw.link"
+					:prepend-icon="item.raw.icon ? item.raw.icon : '$vuetify'"
 					target="_blank"
-					:title="item?.topTitle || item.title"
+					:title="item.raw?.topTitle || item.title"
 				>
 				</v-list-item>
 			</template>

@@ -6,6 +6,8 @@ export const useMenuStore = defineStore('menu', () => {
 	const coreStore = useCoreStore();
 	const links = coreStore.links;
 
+	console.log(links.vuetifyGithub);
+
 	const vuetifyLinks = [
 		{
 			icon: 'mdi:mdi-github',
