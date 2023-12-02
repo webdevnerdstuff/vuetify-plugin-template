@@ -14,7 +14,7 @@
 
 			<v-row>
 				<v-col cols="12">
-					<CodeBlock
+					<VCodeBlock
 						:code="usageAll"
 						:highlightjs="codeBlockSettings.plugin === 'highlightjs'"
 						label="Load all components"
@@ -22,11 +22,11 @@
 						:prismjs="codeBlockSettings.plugin === 'prismjs'"
 						:theme="codeBlockSettings.theme"
 					>
-					</CodeBlock>
+					</VCodeBlock>
 				</v-col>
 
 				<v-col cols="12">
-					<CodeBlock
+					<VCodeBlock
 						:code="usageIndividual"
 						:highlightjs="codeBlockSettings.plugin === 'highlightjs'"
 						label="Load individual components"
@@ -34,7 +34,7 @@
 						:prismjs="codeBlockSettings.plugin === 'prismjs'"
 						:theme="codeBlockSettings.theme"
 					>
-					</CodeBlock>
+					</VCodeBlock>
 				</v-col>
 			</v-row>
 		</v-col>
