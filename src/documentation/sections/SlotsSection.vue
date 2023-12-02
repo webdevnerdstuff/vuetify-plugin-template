@@ -52,7 +52,7 @@
 						</tr>
 						<tr>
 							<td colspan="2">
-								<CodeBlock
+								<VCodeBlock
 									:code="displaySlotsCode"
 									:highlightjs="codeBlockSettings.plugin === 'highlightjs'"
 									lang="typescript"

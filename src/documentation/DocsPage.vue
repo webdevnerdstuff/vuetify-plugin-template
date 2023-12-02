@@ -39,7 +39,7 @@
 
 			<v-row>
 				<v-col cols="12">
-					<CodeBlock
+					<VCodeBlock
 						code="pnpm add vuetify-plugin-template"
 						:highlightjs="codeBlockSettings.plugin === 'highlightjs'"
 						lang="plain"
@@ -52,16 +52,16 @@
 								target="_blank"
 							>pnpm</a>:
 						</template>
-					</CodeBlock>
+					</VCodeBlock>
 				</v-col>
 				<v-col cols="12">
-					<CodeBlock
+					<VCodeBlock
 						code="npm i vuetify-plugin-template"
 						highlightjs
 						lang="plain"
 					>
 						<template #label>Using npm:</template>
-					</CodeBlock>
+					</VCodeBlock>
 				</v-col>
 			</v-row>
 		</v-col>

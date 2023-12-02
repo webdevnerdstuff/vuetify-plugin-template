@@ -67,7 +67,7 @@
 		</v-col>
 
 		<v-col cols="12">
-			<CodeBlock
+			<VCodeBlock
 				class="mb-6"
 				:code="exampleCode"
 				:highlightjs="codeBlockSettings.plugin === 'highlightjs'"
@@ -79,7 +79,7 @@
 				<template #label>
 					<code class="ic">@update</code> Event Example
 				</template>
-			</CodeBlock>
+			</VCodeBlock>
 		</v-col>
 	</v-row>
 </template>
