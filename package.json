@@ -1,6 +1,6 @@
 {
 	"name": "vuetify-plugin-template",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Vuetify Plugin Template is a template to help you get starting building your own plugin/component for Vuetify.",
 	"private": false,
 	"main": "dist/vuetify-plugin-template.cjs.js",
