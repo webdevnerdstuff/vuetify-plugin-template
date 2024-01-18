@@ -7,7 +7,7 @@ import { createVuetify } from 'vuetify';
 import { aliases, mdi } from 'vuetify/iconsets/mdi';
 import { fa } from 'vuetify/iconsets/fa-svg';
 
-// ! This is Labs workaround, need to update later //
+// ? Only needed if using labs components //
 import * as labs from 'vuetify/labs/components';
 
 
