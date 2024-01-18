@@ -1,6 +1,6 @@
 import {
 	UseContainerClasses,
-} from '@/types';
+} from '@/plugin/types';
 import { componentName } from '../utils/globals';
 
 

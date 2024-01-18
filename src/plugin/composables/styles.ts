@@ -1,7 +1,7 @@
 import { CSSProperties } from 'vue';
 import {
 	UseContainerStyle
-} from '@/types';
+} from '@/plugin/types';
 
 
 // ------------------------------------------------ Component Container //

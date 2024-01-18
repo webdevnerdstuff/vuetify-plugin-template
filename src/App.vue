@@ -18,7 +18,10 @@
 
 		<!-- ====================================================== Main Container -->
 		<v-main class="pb-10">
-			<v-container class="px-7">
+			<v-container
+				class="px-7"
+				style="max-width: 1368px;"
+			>
 				<DocsPage :codeBlockOptions="codeBlockSettings" />
 			</v-container>
 		</v-main>
@@ -80,6 +83,28 @@ html {
 	scroll-padding-top: 70px;
 }
 
+a {
+	&:not(.v-list-item, .v-btn, .v-icon, .app-link) {
+		color: #bb86fc;
+
+		&:hover {
+			color: #b39ddb;
+		}
+	}
+}
+
+.v-theme--light {
+	a {
+		&:not(.v-list-item, .v-btn, .v-icon, .app-link) {
+			color: #6200ee;
+
+			&:hover {
+				color: #3700b3;
+			}
+		}
+	}
+}
+
 .top-app-bar {
 	z-index: 99 !important;
 
@@ -101,13 +126,13 @@ html {
 		margin: 0 -0.7em;
 		position: absolute;
 
-		&:not(:hover):not(:focus) {
+		&:not(:hover, :focus) {
 			opacity: 0;
 		}
 	}
 }
 
-.name-item:not(:hover):not(:focus) span {
+.name-item:not(:hover, :focus) span {
 	opacity: 0;
 }
 

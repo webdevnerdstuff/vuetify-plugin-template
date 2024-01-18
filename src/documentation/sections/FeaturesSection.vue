@@ -136,18 +136,19 @@
 				</v-list-item>
 
 				<v-list-item
-					href="https://miragejs.com/"
+					href="https://vitest.dev/"
 					target="_blank"
 				>
 					<template #prepend>
 						<v-img
 							class="me-8"
-							src="https://miragejs.com/favicon.svg"
+							max-height="24"
+							src="https://vitest.dev/logo.svg"
 							width="24"
 						></v-img>
 					</template>
 
-					Mirage JS - To use as a mock server if you need (database included in playground configs)
+					Vitest
 				</v-list-item>
 
 				<v-list-item>
