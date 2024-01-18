@@ -19,6 +19,8 @@ export interface Props {
 	foo?: string;
 }
 
+export interface GlobalOptions extends Props { }
+
 // -------------------------------------------------- Composables //
 export interface UseComposableName {
 	(
