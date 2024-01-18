@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import { AllProps } from './utils/props';
-import { Props } from '@/types';
+import { Props } from '@/plugin/types';
 import {
 	useContainerClasses,
 } from './composables/classes';

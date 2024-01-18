@@ -147,7 +147,7 @@ provide('classes', classes);
 <style lang="scss" scoped>
 :deep(code) {
 	&.ic {
-		background-color: rgba(255, 255, 255, 0.1) !important;
+		background-color: rgb(255 255 255 / 10%) !important;
 		border-radius: 3px;
 		font-size: 85%;
 		font-weight: normal;
@@ -160,7 +160,7 @@ provide('classes', classes);
 .v-theme--light {
 	code {
 		&.ic {
-			background-color: rgba(0, 0, 0, 0.1) !important;
+			background-color: rgb(0 0 0 / 10%) !important;
 		}
 	}
 }

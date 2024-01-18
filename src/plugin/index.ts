@@ -6,7 +6,7 @@ import VPluginTemplate from './VPluginTemplate.vue';
 
 export const globalOptions = Symbol();
 
-export function createVColorField(options: GlobalOptions = {}) {
+export function createVPluginTemplate(options: GlobalOptions = {}) {
 	const install = (app: App) => {
 		app.provide(globalOptions, options);
 
