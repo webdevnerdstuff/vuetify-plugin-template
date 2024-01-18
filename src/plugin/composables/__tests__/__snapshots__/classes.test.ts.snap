@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Classes Composable > useContainerClasses > should return class object 1`] = `
+{
+  "v-plugin-template": true,
+  "v-plugin-template--container": true,
+  "v-plugin-template--container-option": true,
+}
+`;

@@ -37,8 +37,8 @@ export interface UseComposableName {
 export interface UseConvertToUnit {
 	(
 		options: {
-			str: string | number,
 			unit?: string,
+			value: string | number,
 		}
 	): string | void;
 }
