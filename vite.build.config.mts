@@ -39,9 +39,19 @@ export default defineConfig({
 			},
 			external: [
 				...Object.keys(pkg.dependencies || {}),
+				/^vuetify($|\/.+)/,
 			],
 			output: {
 				banner,
+				exports: 'named',
+			},
+		},
+	},
+	css: {
+		preprocessorOptions: {
+			scss: {
+				api: 'modern-compiler', // or "modern", "legacy"
+				importers: [],
 			},
 		},
 	},
@@ -69,6 +79,7 @@ export default defineConfig({
 		}),
 		vuetify({
 			autoImport: true,
+			styles: 'none',
 		}),
 		cssInjectedByJsPlugin({ topExecutionPriority: false }),
 		viteStaticCopy({
@@ -79,7 +90,11 @@ export default defineConfig({
 				},
 			]
 		}),
-		terser(),
+		terser({
+			compress: {
+				drop_console: ['log'],
+			},
+		}),
 	],
 	resolve: {
 		alias: {
