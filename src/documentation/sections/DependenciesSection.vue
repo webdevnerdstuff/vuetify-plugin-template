@@ -31,11 +31,12 @@
 	</v-row>
 </template>
 
-<script setup>
-import { inject } from 'vue';
+<script setup lang="ts">
 import { useCoreStore } from '@/stores/index';
 
 
-const classes = inject('classes');
+const classes = inject<Docs.GlobalClasses>('classes')!;
 const store = useCoreStore();
 </script>
+
+<style lang="scss" scoped></style>

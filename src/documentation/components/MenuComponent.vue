@@ -3,10 +3,10 @@
 		:color="drawerOptions.color ? 'white' : 'primary'"
 		density="compact"
 	>
-		<template v-for="item in menuItems">
+		<template v-for="item, k in menuItems">
 			<v-list-group
 				v-if="item.items"
-				:key="item.items"
+				:key="k"
 				:value="item.title"
 			>
 				<template v-slot:activator="{ props }">
@@ -51,15 +51,14 @@
 	</v-list>
 </template>
 
-<script setup>
-import { inject, onMounted, ref } from 'vue';
+<script setup lang="ts">
 import { useMenuStore } from '@/stores/menu';
 
-const drawerOptions = inject('drawerOptions');
-const store = useMenuStore();
 
-const active = ref('');
-const menuItems = store.menuItems;
+const drawerOptions = inject<Docs.DrawerOptions>('drawerOptions')!;
+const store = useMenuStore();
+const active = ref<string>('');
+const menuItems: Docs.MenuItem[] = store.menuItems;
 
 onMounted(() => {
 	smoothScroll();
@@ -67,25 +66,27 @@ onMounted(() => {
 	active.value = window.location.hash || '#home';
 });
 
-function smoothScroll() {
-	document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-		anchor.addEventListener('click', (e) => {
+function smoothScroll(): void {
+	document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((anchor) => {
+		anchor.addEventListener('click', (e: MouseEvent) => {
 			e.preventDefault();
 
-			const hash = anchor.hash;
-			const id = hash.replace('#', '');
-			const yOffset = -55;
-			const element = document.getElementById(id);
-			const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+			const hash: string = anchor.hash;
+			const id: string = hash.replace('#', '');
+			const yOffset: number = -55;
+			const element: HTMLElement | null = document.getElementById(id);
 
-			active.value = hash;
+			if (element) {
+				const y: number = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
-			window.location.hash = hash;
-			window.scrollTo({ behavior: 'smooth', top: y });
+				active.value = hash;
+
+				window.location.hash = hash;
+				window.scrollTo({ behavior: 'smooth', top: y });
+			}
 		});
 	});
 }
-
 </script>
 
 <style lang="scss" scoped>

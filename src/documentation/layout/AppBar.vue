@@ -42,7 +42,7 @@
 		>
 			<template #item="{ item }">
 				<v-list-item
-					:key="item.key"
+					:key="item.raw.key"
 					density="compact"
 					:href="item.raw.link"
 					:prepend-icon="item.raw.icon ? item.raw.icon : '$vuetify'"
@@ -94,7 +94,7 @@
 	</v-app-bar>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { useCoreStore } from '@/stores/index';
 import { useMenuStore } from '@/stores/menu';
@@ -117,37 +117,37 @@ const menuStore = useMenuStore();
 const store = useCoreStore();
 const theme = useTheme();
 
-const links = store.links;
-const themeName = ref('dark');
-const drawer = ref(true);
+const links: Docs.Links = store.links;
+const themeName = ref<string | null>('dark');
+const drawer = ref<boolean>(true);
 
-const menuItems = [...menuStore.vuetifyLinks];
+const menuItems: Docs.MenuItem[] = [...menuStore.vuetifyLinks] as Docs.MenuItem[];
 
-const iconSize = ref({
+const iconSize = ref<{ height: number, width: number; }>({
 	height: 32,
 	width: 32,
 });
 
-function getTheme() {
-	themeName.value = store.getTheme();
+function getTheme(): void {
+	themeName.value = store.getTheme() as string;
+
 	if (!themeName.value) {
 		setTheme();
-		return false;
+		return;
 	}
 
 	theme.global.name.value = themeName.value;
 	emit('changedTheme', themeName.value);
 }
 
-function setTheme() {
-	themeName.value = store.setTheme(themeName.value);
+function setTheme(): void {
+	themeName.value = store.setTheme(themeName.value as string);
 	theme.global.name.value = themeName.value;
-}
+};
 
-function toggleDrawer() {
+function toggleDrawer(): void {
 	emit('updatedDrawer', drawer.value);
 }
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

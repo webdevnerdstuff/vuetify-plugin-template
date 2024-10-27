@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /* eslint-disable no-unused-vars */
 import { CSSProperties } from 'vue';
 import VPluginTemplate from '../VPluginTemplate.vue';
@@ -8,13 +8,12 @@ import VPluginTemplate from '../VPluginTemplate.vue';
 export * from '../index';
 
 
-// -------------------------------------------------- Vuetify Types //
-
-
-// -------------------------------------------------- Misc //
-export interface KeyStringAny<T = any> {
-	[key: string]: T;
-};
+// -------------------------------------------------- Global //
+declare global {
+	interface KeyStringAny<T = any> {
+		[key: string]: T;
+	}
+}
 
 
 // -------------------------------------------------- Props //
@@ -22,7 +21,8 @@ export interface Props {
 	foo?: string;
 }
 
-export interface GlobalOptions extends Props { }
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+export interface PluginOptions extends Props { }
 
 // -------------------------------------------------- Composables //
 export interface UseComposableName {
@@ -64,7 +64,7 @@ export interface UseContainerStyle {
 
 
 declare module "vue" {
-	interface ComponentCustomProperties { }
+	// interface ComponentCustomProperties { }
 
 	interface GlobalComponents {
 		VPluginTemplate: typeof VPluginTemplate;

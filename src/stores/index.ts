@@ -1,19 +1,20 @@
 import { defineStore } from 'pinia';
-import packageJson from '@root/package.json';
+import packageJson from '../../package.json';
 
 
 export const useCoreStore = defineStore('core', () => {
-	const scopedPackageName = packageJson.name;
-	const packageName = scopedPackageName.split('/')[1] || scopedPackageName;
+	const scopedPackageName: string = packageJson.name;
+	const packageName: string = scopedPackageName.split('/')[1] || scopedPackageName;
 
 	// Links //
-	const repoBaseUrl = `https://github.com/webdevnerdstuff/${packageName}`;
-	const links = {
+	const repoBaseUrl: string = `https://github.com/webdevnerdstuff/${packageName}`;
+	const links: Docs.Links = {
 		changeLog: `${repoBaseUrl}/blob/main/CHANGELOG.md`,
 		github: repoBaseUrl,
 		githubProfile: 'https://github.com/webdevnerdstuff',
 		license: `${repoBaseUrl}/blob/main/LICENSE.md`,
 		npm: `https://www.npmjs.com/package/${scopedPackageName}`,
+		pnpm: 'https://pnpm.io/',
 		vue: 'https://vuejs.org/',
 		vuetify: 'https://vuetifyjs.com/',
 		vuetifyGithub: 'https://github.com/vuetifyjs/vuetify',
@@ -42,7 +43,7 @@ export const useCoreStore = defineStore('core', () => {
 			const value = localStorage.getItem(packageName);
 			return value;
 		},
-		getTheme: () => {
+		getTheme: (): unknown => {
 			const value = localStorage.getItem(`${packageName}-theme`);
 			return value;
 		},

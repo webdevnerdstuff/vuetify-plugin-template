@@ -1,26 +1,29 @@
 <template>
 	<v-row>
 		<v-col
-			id="example"
+			id="examples"
 			cols="12"
 		>
 			<h2 :class="classes.h2">
 				<a
 					:class="classes.headerA"
-					href="#example"
+					href="#examples"
 				>#</a>
-				Example
+				Examples
 			</h2>
 		</v-col>
 
-		<PlaygroundPage />
+		<v-col cols="12">
+			<Example.SimpleExample />
+		</v-col>
 	</v-row>
 </template>
 
-<script setup>
-import { inject } from 'vue';
-import PlaygroundPage from '@/playground/configs/templates/PlaygroundPage.vue';
+<script setup lang="ts">
+import * as Example from '../components/examples';
 
 
-const classes = inject('classes');
+const classes = inject<Docs.GlobalClasses>('classes')!;
 </script>
+
+<style lang="scss" scoped></style>

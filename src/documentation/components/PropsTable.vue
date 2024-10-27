@@ -75,37 +75,27 @@
 	</v-row>
 </template>
 
-<script setup>
-import { inject } from 'vue';
+<script setup lang="ts">
+const classes = inject<Docs.GlobalClasses>('classes')!;
 
+interface Item {
+	name: string;
+	type: string;
+	default: string;
+	desc: string;
+}
 
-const classes = inject('classes');
+interface Props {
+	headers: any;
+	items?: Item[];
+	sectionId?: string;
+	sectionTitle?: string;
+	subtitle?: string;
+}
 
-defineProps({
-	headers: {
-		default: () => [],
-		type: Array,
-	},
-	items: {
-		default: () => [],
-		type: Array,
-	},
-	sectionId: {
-		default: '',
-		type: String,
-	},
-	sectionTitle: {
-		default: null,
-		type: String,
-	},
-	subtitle: {
-		default: null,
-		type: String,
-	},
-});
+defineProps<Props>();
 
-const search = ref('');
+const search = ref<string>('');
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

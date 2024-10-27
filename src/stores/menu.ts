@@ -4,8 +4,8 @@ import { useCoreStore } from './index';
 
 export const useMenuStore = defineStore('menu', () => {
 	const coreStore = useCoreStore();
-	const links = coreStore.links;
-	const vuetifyLinks = [
+	const links: Docs.Links = coreStore.links;
+	const vuetifyLinks: Docs.MenuItem[] = [
 		{
 			icon: 'mdi:mdi-github',
 			key: 'vuetify-github',
@@ -19,7 +19,7 @@ export const useMenuStore = defineStore('menu', () => {
 		},
 	];
 
-	const menuItems = [
+	const menuItems: Docs.MenuItem[] = [
 		{
 			href: '#home',
 			icon: 'mdi:mdi-home',
@@ -46,9 +46,9 @@ export const useMenuStore = defineStore('menu', () => {
 			title: 'Usage',
 		},
 		{
-			href: '#example',
+			href: '#examples',
 			icon: 'mdi:mdi-code-json',
-			title: 'Example',
+			title: 'Examples',
 		},
 		{
 			href: '#props',
