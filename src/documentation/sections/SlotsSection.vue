@@ -31,7 +31,6 @@
 						</tr>
 					</thead>
 					<tbody>
-						<!-- display.append slot -->
 						<tr
 							id="slots-display-default"
 							:class="rowClass"
