@@ -1,6 +1,5 @@
-import { CSSProperties } from 'vue';
-import {
-	UseContainerStyle
+import type {
+	UseContainerStyle,
 } from '@/plugin/types';
 
 
@@ -11,7 +10,6 @@ export const useContainerStyle: UseContainerStyle = (options) => {
 	const styles = {
 		display: displayType,
 	};
-
 
 	return styles as CSSProperties;
 };

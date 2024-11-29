@@ -7,6 +7,7 @@ import { fileURLToPath, URL } from 'node:url';
 import AutoImport from 'unplugin-auto-import/vite';
 import vueDevTools from 'vite-plugin-vue-devtools';
 
+
 const baseUrl = '/vuetify-plugin-template/';
 const playgroundUrl = baseUrl + 'playground/';
 
@@ -61,8 +62,14 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			'@': fileURLToPath(new URL('./src', import.meta.url)),
-			'@root': fileURLToPath(new URL('.', import.meta.url)),
+			'@components': fileURLToPath(new URL('./src/plugin/components/', import.meta.url)),
+			'@composables': fileURLToPath(new URL('./src/plugin/composables', import.meta.url)),
 			'@cypress': fileURLToPath(new URL('./cypress', import.meta.url)),
+			'@data': fileURLToPath(new URL('./src/plugin/data', import.meta.url)),
+			'@plugin': fileURLToPath(new URL('./src/plugin', import.meta.url)),
+			'@root': fileURLToPath(new URL('.', import.meta.url)),
+			'@slots': fileURLToPath(new URL('./src/plugin/slots', import.meta.url)),
+			'@types': fileURLToPath(new URL('./src/plugin/types', import.meta.url)),
 		},
 		extensions: [
 			'.js',

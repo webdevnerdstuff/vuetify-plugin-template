@@ -1,19 +1,20 @@
-import type { App, Plugin } from 'vue';
-import type { PluginOptions } from './types';
 import './styles/main.scss';
+import { useDeepMerge } from '@composables/helpers';
+import type { App, Plugin } from 'vue';
+import { globalOptions, pluginOptionsInjectionKey } from './data/globals';
 import VPluginTemplate from './VPluginTemplate.vue';
 
-import { AllProps } from './utils/props';
 
-
-const defaultOptions = AllProps;
-export const globalOptions = Symbol();
-
-export function createVPluginTemplate(options: PluginOptions = defaultOptions): Plugin {
+export function createVPluginTemplate(options: PluginOptions = {}): Plugin {
 	const install = (app: App) => {
-		app.provide(globalOptions, options);
+		const pluginOptions: PluginOptions = useDeepMerge(options, globalOptions);
 
-		app.component('VPluginTemplate', VPluginTemplate);
+		app.provide(pluginOptionsInjectionKey, pluginOptions);
+
+		// eslint-disable-next-line no-param-reassign
+		app.config.idPrefix = 'vpt';
+
+		app.component('VPluginTemplate', defineAsyncComponent(() => import('./VPluginTemplate.vue')));
 	};
 
 	return {

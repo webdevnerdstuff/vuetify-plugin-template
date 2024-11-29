@@ -1,6 +1,8 @@
-
-/* eslint-disable no-unused-vars */
-import { CSSProperties } from 'vue';
+import type {
+	App,
+	CSSProperties,
+	MaybeRef,
+} from 'vue';
 import VPluginTemplate from '../VPluginTemplate.vue';
 // import { ThemeInstance } from 'vuetify';
 // import type {  } from 'vuetify/labs/components';
@@ -21,8 +23,17 @@ export interface Props {
 	foo?: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export interface PluginOptions extends Props { }
+
+declare global {
+	export interface PluginOptions extends Pick<Props,
+		'foo'
+	> {
+	}
+
+	export interface Settings extends Props, Pick<PluginOptions, 'foo'> {
+	}
+}
+
 
 // -------------------------------------------------- Composables //
 export interface UseComposableName {
@@ -43,13 +54,22 @@ export interface UseConvertToUnit {
 	): string | void;
 }
 
+export interface UseDeepMerge {
+	(
+		target: Record<string, any>,
+		sources: Record<string, any>,
+	): Record<string, any>;
+}
+
 // ------------------------- Classes //
+export type ComputedClasses = Record<string, boolean>;
+
 export interface UseContainerClasses {
 	(
 		options: {
 			isOption?: boolean;
 		}
-	): object;
+	): ComputedClasses;
 }
 
 
@@ -63,10 +83,17 @@ export interface UseContainerStyle {
 }
 
 
-declare module "vue" {
-	// interface ComponentCustomProperties { }
+// -------------------------------------------------- Plugin Component //
+declare module 'vue' {
+	interface ComponentCustomProperties { }
 
 	interface GlobalComponents {
 		VPluginTemplate: typeof VPluginTemplate;
 	}
 }
+
+declare function createVPluginTemplate(options?: PluginOptions): {
+	install: (app: App) => void;
+};
+
+export { createVPluginTemplate };
