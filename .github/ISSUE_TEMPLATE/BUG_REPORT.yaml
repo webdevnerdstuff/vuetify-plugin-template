@@ -3,7 +3,7 @@ description: File a bug report
 title: "[Bug]: "
 labels: ["bug", "triage"]
 assignees:
-  - USERNAME
+  - webdevnerdstuff
 body:
   - type: markdown
     attributes:
@@ -34,7 +34,7 @@ body:
     id: reproduction
     attributes:
       label: Reproduction link
-      description: Please only use Codepen, [Vuetify Playground](https://play.vuetifyjs.com/), [JSFiddle](https://www.jsfiddle.net/), [CodeSandbox](https://codesandbox.io/s/vue) or a github repo.
+      description: Please only use [StackBlitz](https://stackblitz.com/), [CodeSandbox](https://codesandbox.io/s/vue) or a github repo. Issues submitted without a reproduction link will be closed.
     validations:
       required: true
   - type: textarea

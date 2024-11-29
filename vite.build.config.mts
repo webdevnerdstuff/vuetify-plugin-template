@@ -12,12 +12,15 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 
+const scopedPackageName = pkg.name;
+const packageName = scopedPackageName.split('/')[1];
+
 const banner = `/**
- * @name ${pkg.name}
+ * @name ${scopedPackageName}
  * @version ${pkg.version}
  * @description ${pkg.description}
  * @author ${pkg.author}
- * @copyright Copyright ${new Date().getFullYear()}, __USERNAME__
+ * @copyright Copyright ${new Date().getFullYear()}, WebDevNerdStuff
  * @homepage ${pkg.homepage}
  * @repository ${pkg.repository}
  * @license ${pkg.license} License
@@ -29,9 +32,9 @@ export default defineConfig({
 	build: {
 		lib: {
 			entry: './src/plugin/index.ts',
-			name: pkg.name,
+			name: packageName,
 			formats: ['es', 'cjs'],
-			fileName: format => `${pkg.name}.${format}.js`,
+			fileName: format => `${packageName}.${format}.js`,
 		},
 		rollupOptions: {
 			input: {
@@ -72,10 +75,12 @@ export default defineConfig({
 		}),
 		dts({
 			insertTypesEntry: true,
+			tsconfigPath: 'tsconfig.build.json',
 		}),
 		typescript({
 			check: true,
 			include: ['./src/plugin/**/*.vue'],
+			tsconfig: 'tsconfig.build.json',
 		}),
 		vuetify({
 			autoImport: true,

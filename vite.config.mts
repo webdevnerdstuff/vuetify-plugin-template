@@ -1,10 +1,11 @@
 import vue from '@vitejs/plugin-vue';
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify';
-import eslint from 'vite-plugin-eslint';
+import eslint from 'vite-plugin-eslint2';
 import stylelint from 'vite-plugin-stylelint';
 import { defineConfig } from 'vite';
 import { fileURLToPath, URL } from 'node:url';
 import AutoImport from 'unplugin-auto-import/vite';
+import vueDevTools from 'vite-plugin-vue-devtools';
 
 const baseUrl = '/vuetify-plugin-template/';
 const playgroundUrl = baseUrl + 'playground/';
@@ -18,7 +19,7 @@ export default defineConfig({
 	css: {
 		preprocessorOptions: {
 			scss: {
-				api: 'modern-compiler', // or "modern", "legacy"
+				api: 'modern-compiler',
 				importers: [],
 			},
 		},
@@ -26,6 +27,8 @@ export default defineConfig({
 	plugins: [
 		eslint({
 			fix: true,
+			exclude: ['node_modules/**', 'vendor/**'],
+			include: ['src/**/*.{ts,mts,tsx,vue}'],
 		}),
 		stylelint({
 			cache: false,
@@ -50,6 +53,7 @@ export default defineConfig({
 		vue({
 			template: { transformAssetUrls }
 		}),
+		vueDevTools(),
 		vuetify({
 			autoImport: true,
 		}),
@@ -58,6 +62,7 @@ export default defineConfig({
 		alias: {
 			'@': fileURLToPath(new URL('./src', import.meta.url)),
 			'@root': fileURLToPath(new URL('.', import.meta.url)),
+			'@cypress': fileURLToPath(new URL('./cypress', import.meta.url)),
 		},
 		extensions: [
 			'.js',
@@ -70,10 +75,12 @@ export default defineConfig({
 		],
 	},
 	server: {
+		host: '127.0.0.1',
+		port: 3000,
 		hmr: {
 			protocol: 'ws',
 		},
-		open: process?.env?.NODE_ENV === 'playground' ? playgroundUrl : false,
+		open: process?.env?.NODE_ENV === 'playground' ? playgroundUrl : true,
 	},
 });
 
