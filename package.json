@@ -19,7 +19,7 @@
 		"deploy": "gh-pages -d docs",
 		"prepublishOnly": "npm run build",
 		"lint": "eslint src/**/*.{ts,vue}",
-		"prepare": "husky install",
+		"prepare": "husky",
 		"test:dev": "vitest",
 		"test:all": "vitest --run",
 		"test:build": "vitest --run --bail 1"
