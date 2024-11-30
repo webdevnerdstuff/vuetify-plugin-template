@@ -1,16 +1,28 @@
-import { defineConfig } from "cypress";
+import { defineConfig } from 'cypress';
+import customViteConfig from './vite.cypress.config';
 
 export default defineConfig({
-  e2e: {
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
-    },
-  },
+	e2e: {
+		setupNodeEvents(on, config) {
+			config.env = {
+				...process.env,
+				...config.env,
+			};
+			return config;
+		},
+		specPattern: './src/**/*.spec.cy.{js,jsx,ts,tsx}',
+	},
 
-  component: {
-    devServer: {
-      framework: "vue-cli",
-      bundler: "webpack",
-    },
-  },
+	component: {
+		devServer: {
+			bundler: 'vite',
+			framework: 'vue',
+			viteConfig: customViteConfig,
+		},
+		specPattern: './src/**/*.cy.{js,jsx,ts,tsx}',
+		viewportHeight: 800,
+		viewportWidth: 1920,
+	},
+
+	numTestsKeptInMemory: 0,
 });

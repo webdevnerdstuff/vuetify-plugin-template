@@ -5,11 +5,11 @@
 		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.cypress-ct.tsbuildinfo",
 		"typeRoots": [
 			"./cypress/types",
-			"./node_modules/@types"
+			"./src/plugin/types",
+			"./node_modules/@types",
+			"./node_modules/cypress-real-events",
+			"./node_modules/vuetify"
 		],
-		"types": [
-			"cypress-real-events",
-		]
 	},
 	"exclude": [],
 	"extends": "./tsconfig.app.json",

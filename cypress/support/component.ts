@@ -3,7 +3,7 @@ import AppTemplate from '../templates/App.vue';
 import vuetify from "../../src/plugins/vuetify";
 import { h } from "vue";
 import { mount } from 'cypress/vue';
-import VStepperForm from '../../src/plugin/VStepperForm.vue';
+import VPluginTemplate from '../../src/plugin/VPluginTemplate.vue';
 import type { Component } from 'vue';
 import "cypress-real-events";
 import { pluginOptionsInjectionKey } from '../../src/plugin/data/globals';
@@ -60,7 +60,7 @@ Cypress.Commands.add('mountComponent', (options: MountComponentOptions = {}) => 
 	const localModelValue = { ...modelValue };
 
 	return cy.then(() => {
-		cy.mount(VStepperForm as any, {
+		cy.mount(VPluginTemplate as any, {
 			props: {
 				modelValue: localModelValue,
 				...componentProps,

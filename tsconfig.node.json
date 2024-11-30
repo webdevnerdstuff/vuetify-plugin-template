@@ -1,19 +1,25 @@
 {
 	"extends": "@tsconfig/node22/tsconfig.json",
+	"exclude": [
+		"cypress.config.*"
+	],
 	"include": [
-	  "vite.config.*",
-	  "vitest.config.*",
-	  "cypress.config.*",
-	  "nightwatch.conf.*",
-	  "playwright.config.*"
+		"vite.config.*",
+		"vitest.config.*",
+		"cypress.config.*",
+		"nightwatch.conf.*",
+		"playwright.config.*"
 	],
 	"compilerOptions": {
-	  "composite": true,
-	  "noEmit": true,
-	  "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
-
-	  "module": "ESNext",
-	  "moduleResolution": "Bundler",
-	  "types": ["node"]
+		"allowSyntheticDefaultImports": true,
+		"composite": true,
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"noEmit": true,
+		"skipLibCheck": true,
+		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+		"types": [
+			"node"
+		]
 	}
-  }
+}

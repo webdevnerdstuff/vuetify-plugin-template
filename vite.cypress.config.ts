@@ -36,8 +36,14 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			'@': resolve(__dirname, './src'),
+			'@components': resolve(__dirname, './src/plugin/components/'),
+			'@composables': resolve(__dirname, './src/plugin/composables/'),
 			'@cypress': resolve(__dirname, './cypress'),
+			'@data': resolve(__dirname, './src/plugin/data/'),
+			'@plugin': resolve(__dirname, './src/plugin'),
 			'@root': resolve(__dirname, '.'),
+			'@slots': resolve(__dirname, './src/plugin/slots/'),
+			'@types': resolve(__dirname, './src/plugin/types/'),
 		},
 		extensions: [
 			'.js',

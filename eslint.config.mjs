@@ -22,6 +22,7 @@ export default tseslint.config(
 			'vite.build.config.mts',
 			'vite.config.mts',
 			'vite.cypress.config.ts',
+			'vitest.config.mts',
 		],
 	},
 

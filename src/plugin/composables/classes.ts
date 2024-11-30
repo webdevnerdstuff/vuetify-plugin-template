@@ -1,7 +1,7 @@
-import { componentName } from '@data/globals';
 import type {
 	UseContainerClasses,
-} from '@plugin/types';
+} from '../types';
+import { componentName } from '../data/globals';
 
 
 // ------------------------------------------------ Component Container //

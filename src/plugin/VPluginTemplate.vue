@@ -1,7 +1,8 @@
 <template>
 	<div
-		ref="inlineFieldsContainer"
+		ref="pluginTemplate"
 		:class="containerClasses"
+		data-cy="pluginTemplate"
 		:style="containerStyle"
 	>
 		My Custom Component
