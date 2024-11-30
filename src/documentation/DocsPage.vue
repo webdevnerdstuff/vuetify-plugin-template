@@ -10,7 +10,7 @@
 		</v-col>
 
 		<v-col class="mb-4">
-			<h1 class="v-heading text-h3 text-sm-h3 mb-4">
+			<h1 class="v-heading text-h3 text-sm-h3 mb-1">
 				Vuetify Plugin Template
 			</h1>
 			<p class="mb-4 text-grey-darken-1">by WebDevNerdStuff</p>
@@ -125,26 +125,4 @@ const componentVersion = ref<string | number>(packageInfo.version);
 provide<Docs.GlobalClasses>('classes', classes);
 </script>
 
-<style lang="scss" scoped>
-:deep(pre),
-:deep(code) {
-	&.ic {
-		background-color: rgb(255 255 255 / 10%) !important;
-		border-radius: 3px;
-		font-size: 85%;
-		font-weight: normal;
-		padding: 0.2em 0.4em;
-	}
-}
-</style>
-
-<style lang="scss">
-.v-theme--light {
-	pre,
-	code {
-		&.ic {
-			background-color: rgb(0 0 0 / 10%) !important;
-		}
-	}
-}
-</style>
+<style lang="scss" scoped></style>

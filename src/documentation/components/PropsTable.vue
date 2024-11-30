@@ -54,20 +54,24 @@
 					</template>
 
 					<template #[`item.type`]="{ item }">
-						<td class="text-success">
-							{{ item.type }}
-						</td>
+						<td
+							class="text-success  py-1"
+							v-html="item.type"
+						></td>
 					</template>
 
 					<template #[`item.default`]="{ item }">
 						<td
-							class="text-accent"
+							class="text-accent py-1"
 							v-html="item.default"
 						></td>
 					</template>
 
 					<template #[`item.desc`]="{ item }">
-						<td v-html="item.desc"></td>
+						<td
+							class="py-1"
+							v-html="item.desc"
+						></td>
 					</template>
 				</v-data-table>
 			</v-card>

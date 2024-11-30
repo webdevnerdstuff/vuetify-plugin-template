@@ -46,11 +46,6 @@ export const useMenuStore = defineStore('menu', () => {
 			title: 'Usage',
 		},
 		{
-			href: '#examples',
-			icon: 'mdi:mdi-code-json',
-			title: 'Examples',
-		},
-		{
 			href: '#props',
 			icon: 'mdi:mdi-cog',
 			title: 'Props',
@@ -64,6 +59,19 @@ export const useMenuStore = defineStore('menu', () => {
 			href: '#slots',
 			icon: 'mdi:mdi-slot-machine',
 			title: 'Slots',
+		},
+		{
+			href: '#examples',
+			icon: 'mdi:mdi-code-json',
+			items: [
+				{
+					href: '#examples',
+					icon: 'mdi:mdi-code-json',
+					key: 'examples-basic',
+					title: 'Simple Example',
+				},
+			],
+			title: 'Examples',
 		},
 		{
 			href: '#playground',

@@ -136,6 +136,22 @@
 				</v-list-item>
 
 				<v-list-item
+					href="https://www.cypress.io/"
+					target="_blank"
+				>
+					<template #prepend>
+						<v-img
+							class="me-8"
+							max-height="24"
+							src="https://www.cypress.io/favicon.svg"
+							width="24"
+						></v-img>
+					</template>
+
+					Cypress
+				</v-list-item>
+
+				<v-list-item
 					href="https://vitest.dev/"
 					target="_blank"
 				>
