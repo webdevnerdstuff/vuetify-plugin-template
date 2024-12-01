@@ -1,7 +1,6 @@
 import type {
 	App,
 	CSSProperties,
-	MaybeRef,
 } from 'vue';
 import VPluginTemplate from '../VPluginTemplate.vue';
 // import { ThemeInstance } from 'vuetify';
