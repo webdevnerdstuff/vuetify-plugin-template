@@ -85,20 +85,12 @@
 </template>
 
 
-<script setup>
-import { computed, inject, ref } from 'vue';
+<script setup lang="ts">
 import { useCoreStore } from '@/stores/index';
 
 
-const props = defineProps({
-	codeBlockOptions: {
-		required: true,
-		type: Object,
-	},
-});
-
-const codeBlockSettings = computed(() => props.codeBlockOptions);
-const classes = inject('classes');
+const codeBlockSettings = inject<Docs.CodeBlockSettings>('codeBlockSettings')!;
+const classes = inject<Docs.GlobalClasses>('classes')!;
 const store = useCoreStore();
 
 const headers = [
@@ -117,7 +109,7 @@ const headers = [
 		sortable: false,
 		title: 'Description',
 	},
-];
+] as const;
 const items = [
 	{
 		desc: 'Emitted when the component has been updated',
@@ -143,3 +135,5 @@ function updatedValue(value, field) {
 }
 <\/script>`;
 </script>
+
+<style lang="scss" scoped></style>

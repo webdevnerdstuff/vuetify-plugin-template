@@ -1,6 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-unused-vars */
-import { CSSProperties } from 'vue';
+import type {
+	App,
+	CSSProperties,
+} from 'vue';
 import VPluginTemplate from '../VPluginTemplate.vue';
 // import { ThemeInstance } from 'vuetify';
 // import type {  } from 'vuetify/labs/components';
@@ -8,13 +9,12 @@ import VPluginTemplate from '../VPluginTemplate.vue';
 export * from '../index';
 
 
-// -------------------------------------------------- Vuetify Types //
-
-
-// -------------------------------------------------- Misc //
-export interface KeyStringAny<T = any> {
-	[key: string]: T;
-};
+// -------------------------------------------------- Global //
+declare global {
+	interface KeyStringAny<T = any> {
+		[key: string]: T;
+	}
+}
 
 
 // -------------------------------------------------- Props //
@@ -22,7 +22,17 @@ export interface Props {
 	foo?: string;
 }
 
-export interface GlobalOptions extends Props { }
+
+declare global {
+	export interface PluginOptions extends Pick<Props,
+		'foo'
+	> {
+	}
+
+	export interface Settings extends Props, Pick<PluginOptions, 'foo'> {
+	}
+}
+
 
 // -------------------------------------------------- Composables //
 export interface UseComposableName {
@@ -43,13 +53,22 @@ export interface UseConvertToUnit {
 	): string | void;
 }
 
+export interface UseDeepMerge {
+	(
+		target: Record<string, any>,
+		sources: Record<string, any>,
+	): Record<string, any>;
+}
+
 // ------------------------- Classes //
+export type ComputedClasses = Record<string, boolean>;
+
 export interface UseContainerClasses {
 	(
 		options: {
 			isOption?: boolean;
 		}
-	): object;
+	): ComputedClasses;
 }
 
 
@@ -63,10 +82,17 @@ export interface UseContainerStyle {
 }
 
 
-declare module "vue" {
+// -------------------------------------------------- Plugin Component //
+declare module 'vue' {
 	interface ComponentCustomProperties { }
 
 	interface GlobalComponents {
 		VPluginTemplate: typeof VPluginTemplate;
 	}
 }
+
+declare function createVPluginTemplate(options?: PluginOptions): {
+	install: (app: App) => void;
+};
+
+export { createVPluginTemplate };

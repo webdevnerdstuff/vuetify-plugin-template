@@ -53,19 +53,9 @@
 	</v-row>
 </template>
 
-<script setup>
-import { computed, inject } from 'vue';
-
-
-const props = defineProps({
-	codeBlockOptions: {
-		required: true,
-		type: Object,
-	},
-});
-
-const codeBlockSettings = computed(() => props.codeBlockOptions);
-const classes = inject('classes');
+<script setup lang="ts">
+const codeBlockSettings = inject<Docs.CodeBlockSettings>('codeBlockSettings')!;
+const classes = inject<Docs.GlobalClasses>('classes')!;
 
 const usageGlobalPlugin = `import { createApp } from 'vue';
 import App from './App.vue';
@@ -101,3 +91,6 @@ const usageIndividual = `<template>
   const foo = ref(null);
 \</script\>`;
 </script>
+
+
+<style lang="scss" scoped></style>

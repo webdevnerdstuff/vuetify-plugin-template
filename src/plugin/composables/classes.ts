@@ -1,7 +1,7 @@
-import {
+import type {
 	UseContainerClasses,
-} from '@/plugin/types';
-import { componentName } from '../utils/globals';
+} from '../types';
+import { componentName } from '../data/globals';
 
 
 // ------------------------------------------------ Component Container //
@@ -11,6 +11,6 @@ export const useContainerClasses: UseContainerClasses = (options) => {
 	return {
 		[`${componentName}`]: true,
 		[`${componentName}--container`]: true,
-		[`${componentName}--container-option`]: isOption,
+		[`${componentName}--container-option`]: isOption ?? false,
 	};
 };

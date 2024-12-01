@@ -54,20 +54,24 @@
 					</template>
 
 					<template #[`item.type`]="{ item }">
-						<td class="text-success">
-							{{ item.type }}
-						</td>
+						<td
+							class="text-success  py-1"
+							v-html="item.type"
+						></td>
 					</template>
 
 					<template #[`item.default`]="{ item }">
 						<td
-							class="text-accent"
+							class="text-accent py-1"
 							v-html="item.default"
 						></td>
 					</template>
 
 					<template #[`item.desc`]="{ item }">
-						<td v-html="item.desc"></td>
+						<td
+							class="py-1"
+							v-html="item.desc"
+						></td>
 					</template>
 				</v-data-table>
 			</v-card>
@@ -75,37 +79,27 @@
 	</v-row>
 </template>
 
-<script setup>
-import { inject } from 'vue';
+<script setup lang="ts">
+const classes = inject<Docs.GlobalClasses>('classes')!;
 
+interface Item {
+	name: string;
+	type: string;
+	default: string;
+	desc: string;
+}
 
-const classes = inject('classes');
+interface Props {
+	headers: any;
+	items?: Item[];
+	sectionId?: string;
+	sectionTitle?: string;
+	subtitle?: string;
+}
 
-defineProps({
-	headers: {
-		default: () => [],
-		type: Array,
-	},
-	items: {
-		default: () => [],
-		type: Array,
-	},
-	sectionId: {
-		default: '',
-		type: String,
-	},
-	sectionTitle: {
-		default: null,
-		type: String,
-	},
-	subtitle: {
-		default: null,
-		type: String,
-	},
-});
+defineProps<Props>();
 
-const search = ref('');
+const search = ref<string>('');
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

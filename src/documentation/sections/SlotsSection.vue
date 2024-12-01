@@ -31,7 +31,6 @@
 						</tr>
 					</thead>
 					<tbody>
-						<!-- display.append slot -->
 						<tr
 							id="slots-display-default"
 							:class="rowClass"
@@ -68,20 +67,13 @@
 	</v-row>
 </template>
 
-<script setup>
-import { inject } from 'vue';
+<script setup lang="ts">
 import { useCoreStore } from '@/stores/index';
 
-const props = defineProps({
-	codeBlockOptions: {
-		required: true,
-		type: Object,
-	},
-});
 
-const codeBlockSettings = computed(() => props.codeBlockOptions);
+const codeBlockSettings = inject<Docs.CodeBlockSettings>('codeBlockSettings')!;
+const classes = inject<Docs.GlobalClasses>('classes')!;
 const store = useCoreStore();
-const classes = inject('classes');
 const theme = useTheme();
 const isDark = ref(true);
 

@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite';
-import * as path from 'path';
 import AutoImport from 'unplugin-auto-import/vite';
 import commonjs from '@rollup/plugin-commonjs';
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
@@ -10,14 +9,18 @@ import typescript from 'rollup-plugin-typescript2';
 import vue from '@vitejs/plugin-vue';
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
+import { resolve } from 'path';
 
+
+const scopedPackageName = pkg.name;
+const packageName = scopedPackageName.split('/')[1];
 
 const banner = `/**
- * @name ${pkg.name}
+ * @name ${scopedPackageName}
  * @version ${pkg.version}
  * @description ${pkg.description}
  * @author ${pkg.author}
- * @copyright Copyright ${new Date().getFullYear()}, __USERNAME__
+ * @copyright Copyright ${new Date().getFullYear()}, WebDevNerdStuff
  * @homepage ${pkg.homepage}
  * @repository ${pkg.repository}
  * @license ${pkg.license} License
@@ -29,19 +32,29 @@ export default defineConfig({
 	build: {
 		lib: {
 			entry: './src/plugin/index.ts',
-			name: pkg.name,
+			name: packageName,
 			formats: ['es', 'cjs'],
-			fileName: format => `${pkg.name}.${format}.js`,
+			fileName: format => `${packageName}.${format}.js`,
 		},
 		rollupOptions: {
 			input: {
-				main: path.resolve(__dirname, './src/plugin/index.ts')
+				main: resolve(__dirname, './src/plugin/index.ts')
 			},
 			external: [
 				...Object.keys(pkg.dependencies || {}),
+				/^vuetify($|\/.+)/,
 			],
 			output: {
 				banner,
+				exports: 'named',
+			},
+		},
+	},
+	css: {
+		preprocessorOptions: {
+			scss: {
+				api: 'modern-compiler', // or "modern", "legacy"
+				importers: [],
 			},
 		},
 	},
@@ -62,13 +75,16 @@ export default defineConfig({
 		}),
 		dts({
 			insertTypesEntry: true,
+			tsconfigPath: 'tsconfig.build.json',
 		}),
 		typescript({
 			check: true,
 			include: ['./src/plugin/**/*.vue'],
+			tsconfig: 'tsconfig.build.json',
 		}),
 		vuetify({
 			autoImport: true,
+			styles: 'none',
 		}),
 		cssInjectedByJsPlugin({ topExecutionPriority: false }),
 		viteStaticCopy({
@@ -79,12 +95,23 @@ export default defineConfig({
 				},
 			]
 		}),
-		terser(),
+		terser({
+			compress: {
+				drop_console: ['log'],
+			},
+		}),
 	],
 	resolve: {
 		alias: {
-			'@': path.resolve(__dirname, './src'),
-			'@root': path.resolve(__dirname, './')
+			'@': resolve(__dirname, './src'),
+			'@components': resolve(__dirname, './src/plugin/components/'),
+			'@composables': resolve(__dirname, './src/plugin/composables/'),
+			'@cypress': resolve(__dirname, './cypress'),
+			'@data': resolve(__dirname, './src/plugin/data/'),
+			'@plugin': resolve(__dirname, './src/plugin'),
+			'@root': resolve(__dirname, '.'),
+			'@slots': resolve(__dirname, './src/plugin/slots/'),
+			'@types': resolve(__dirname, './src/plugin/types/'),
 		},
 		extensions: [
 			'.js',

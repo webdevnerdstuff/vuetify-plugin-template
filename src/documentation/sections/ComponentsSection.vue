@@ -19,21 +19,9 @@
 	</v-row>
 </template>
 
-<script setup>
-import { inject } from 'vue';
-// import { useCoreStore } from '@/stores/index';
-
-
-defineProps({
-	codeBlockOptions: {
-		required: true,
-		type: Object,
-	},
-});
-
-const classes = inject('classes');
-// const store = useCoreStore();
+<script setup lang="ts">
+// const codeBlockSettings = inject<Docs.CodeBlockSettings>('codeBlockSettings')!;
+const classes = inject<Docs.GlobalClasses>('classes')!;
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

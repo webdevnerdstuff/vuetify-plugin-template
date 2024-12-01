@@ -1,7 +1,8 @@
 <template>
 	<div
-		ref="inlineFieldsContainer"
+		ref="pluginTemplate"
 		:class="containerClasses"
+		data-cy="pluginTemplate"
 		:style="containerStyle"
 	>
 		My Custom Component
@@ -9,16 +10,17 @@
 </template>
 
 <script setup lang="ts">
-import { AllProps } from './utils/props';
-import { Props } from '@/plugin/types';
 import {
 	useContainerClasses,
-} from './composables/classes';
+} from '@composables/classes';
+import { useDeepMerge } from '@composables/helpers';
 import {
 	useContainerStyle,
-} from './composables/styles';
-import componentEmits from './utils/emits';
-
+} from '@composables/styles';
+import componentEmits from '@data/emits';
+import { pluginOptionsInjectionKey } from '@data/globals';
+import { AllProps } from '@data/props';
+import type { Props } from './types';
 
 
 const attrs = useAttrs();
@@ -28,13 +30,18 @@ const emit = defineEmits([...componentEmits]);
 
 // -------------------------------------------------- Props //
 const props = withDefaults(defineProps<Props>(), { ...AllProps });
-const settings = reactive({ ...attrs, ...props });
+
+const injectedPluginOptions = inject<PluginOptions>(pluginOptionsInjectionKey)!;
+const settings: Settings = useDeepMerge(injectedPluginOptions, props);
 
 
 // -------------------------------------------------- Data #
-const modelValue = ref(attrs.modelValue);
+const modelValue = defineModel();
+const componentId = useId();
 
 console.log({
+	attrs,
+	componentId,
 	emit,
 	modelValue,
 	props,
@@ -52,5 +59,4 @@ const containerStyle = computed(() => useContainerStyle({
 }));
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

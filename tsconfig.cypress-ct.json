@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+		"composite": true,
+		"rootDir": "./",
+		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.cypress-ct.tsbuildinfo",
+		"typeRoots": [
+			"./cypress/types",
+			"./src/plugin/types",
+			"./node_modules/@types",
+			"./node_modules/cypress-real-events",
+			"./node_modules/vuetify"
+		],
+	},
+	"exclude": [],
+	"extends": "./tsconfig.app.json",
+	"include": [
+		"cypress/**/*.ts",
+		"cypress/**/*.vue",
+		"cypress/support/commands.ts",
+		"cypress/support/component.*",
+		"vite.cypress.config.ts",
+		"src/**/*",
+		"src/**/*.vue",
+		"src/**/__tests__/*"
+	]
+}

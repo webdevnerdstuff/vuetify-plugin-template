@@ -1,5 +1,5 @@
 import { fileURLToPath } from 'node:url';
-import { mergeConfig, defineConfig, configDefaults } from 'vitest/config';
+import { configDefaults, defineConfig, mergeConfig } from 'vitest/config';
 import viteConfig from './vite.config.mts';
 
 export default mergeConfig(
@@ -13,9 +13,9 @@ export default mergeConfig(
 			root: fileURLToPath(new URL('./', import.meta.url)),
 			server: {
 				deps: {
-					inline: ['element-plus', 'vuetify-plugin-template', 'vuetify']
-				}
+					inline: ['element-plus', 'vuetify-plugin-template', 'vuetify'],
+				},
 			},
-		}
-	})
+		},
+	}),
 );

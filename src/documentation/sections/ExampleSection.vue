@@ -1,26 +1,63 @@
 <template>
 	<v-row>
 		<v-col
-			id="example"
+			id="examples"
 			cols="12"
 		>
 			<h2 :class="classes.h2">
 				<a
 					:class="classes.headerA"
-					href="#example"
+					href="#examples"
 				>#</a>
-				Example
+				Examples
 			</h2>
 		</v-col>
 
-		<PlaygroundPage />
+		<v-col cols="12">
+			<ExampleContainer
+				:code="getTemplateCode('SimpleExampleRef')"
+				:codeBlockSettings="codeBlockSettings"
+				@closePicker="closePicker('SimpleExampleRef');"
+			>
+				<Example.SimpleExample
+					ref="SimpleExampleRef"
+					:open="refElementsOpen.SimpleExampleRef"
+				/>
+			</ExampleContainer>
+		</v-col>
 	</v-row>
 </template>
 
-<script setup>
-import { inject } from 'vue';
-import PlaygroundPage from '@/playground/configs/templates/PlaygroundPage.vue';
+<script setup lang="ts">
+
+import type { ExampleCode } from '../components/ExampleContainer.vue';
+import ExampleContainer from '../components/ExampleContainer.vue';
+import * as Example from '../components/examples';
 
 
-const classes = inject('classes');
+const codeBlockSettings = inject<Docs.CodeBlockSettings>('codeBlockSettings')!;
+const classes = inject<Docs.GlobalClasses>('classes')!;
+
+const SimpleExampleRef = ref(null);
+
+const refElements = ref({
+	SimpleExampleRef,
+});
+
+const refElementsOpen = ref({
+	SimpleExampleRef: null,
+});
+
+function getTemplateCode(exampleName: string): ExampleCode {
+	const el = refElements.value[exampleName];
+	const example = el?.exampleCode ?? { code: '', desc: undefined, name: undefined, template: '' };
+
+	return example;
+}
+
+function closePicker(key: string) {
+	refElementsOpen.value[key] = new Date().getTime().toString();
+}
 </script>
+
+<style lang="scss" scoped></style>

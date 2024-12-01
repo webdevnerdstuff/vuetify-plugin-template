@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 
 
-const propsHeaders = [
+const propsHeaders: unknown[] = [
 	{
 		align: 'start',
 		filterable: true,
@@ -34,7 +34,7 @@ const propsHeaders = [
 	},
 ];
 
-const componentProps = [
+const componentProps: unknown[] = [
 	{
 		default: 'foo',
 		desc: 'Prop Description',

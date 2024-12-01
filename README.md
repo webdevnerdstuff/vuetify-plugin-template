@@ -42,7 +42,7 @@ See [Documentation & Demo](https://webdevnerdstuff.github.io/vuetify-plugin-temp
 
 ## License
 
-Copyright (c) 2023 WebDevNerdStuff  
+Copyright (c) 2024 WebDevNerdStuff  
 Licensed under the [MIT license](https://github.com/webdevnerdstuff/vuetify-plugin-template/blob/master/LICENSE.md).
 
 
