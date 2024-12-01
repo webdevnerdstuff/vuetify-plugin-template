@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite';
-import * as path from 'path';
 import AutoImport from 'unplugin-auto-import/vite';
 import commonjs from '@rollup/plugin-commonjs';
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
@@ -10,6 +9,7 @@ import typescript from 'rollup-plugin-typescript2';
 import vue from '@vitejs/plugin-vue';
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
+import { resolve } from 'path';
 
 
 const scopedPackageName = pkg.name;
@@ -38,7 +38,7 @@ export default defineConfig({
 		},
 		rollupOptions: {
 			input: {
-				main: path.resolve(__dirname, './src/plugin/index.ts')
+				main: resolve(__dirname, './src/plugin/index.ts')
 			},
 			external: [
 				...Object.keys(pkg.dependencies || {}),
@@ -103,8 +103,15 @@ export default defineConfig({
 	],
 	resolve: {
 		alias: {
-			'@': path.resolve(__dirname, './src'),
-			'@root': path.resolve(__dirname, './')
+			'@': resolve(__dirname, './src'),
+			'@components': resolve(__dirname, './src/plugin/components/'),
+			'@composables': resolve(__dirname, './src/plugin/composables/'),
+			'@cypress': resolve(__dirname, './cypress'),
+			'@data': resolve(__dirname, './src/plugin/data/'),
+			'@plugin': resolve(__dirname, './src/plugin'),
+			'@root': resolve(__dirname, '.'),
+			'@slots': resolve(__dirname, './src/plugin/slots/'),
+			'@types': resolve(__dirname, './src/plugin/types/'),
 		},
 		extensions: [
 			'.js',
